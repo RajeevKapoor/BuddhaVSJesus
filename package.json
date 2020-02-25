@@ -1,0 +1,15 @@
+{
+  "name": "buddhavsjesus",
+  "version": "1.0.0",
+  "description": "Joke discord bot pair for BH Discord",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cleverbot-free": "^1.0.3",
+    "discord.js": "^11.5.1"
+  }
+}
