@@ -25,13 +25,13 @@ buddha_client.on('ready', () => {
 });
 
 jesus_client.on('message', async message => {
-    if(!timerSet.has(message.author.id) && message.mentions.users.first() === jesus_client.user){
+    if(!timerSet.has(message.author.id) && message.mentions.users.first() === jesus_client.user &&! message.author.bot){
  	timerSet.add(message.author.id)
 	setTimeout(function(){
 		timerSet.delete(message.author.id)
 	}, 2 * 1000)
     }
-    else if(message.mentions.users.first() === jesus_client.user){
+    else if(message.mentions.users.first() === jesus_client.user &&! message.author.bot){
 	return message.reply(`:no_entry: You must wait 2 seconds before talking to the bot again!`)
 	}
     if (message.mentions.users.first() === jesus_client.user) {
@@ -49,11 +49,11 @@ buddha_client.on('message', async message => {
 		timerSet.delete(message.author.id)
 	}, 2 * 1000)
     }
-    else if(message.mentions.users.first() === buddha_client.user) {
+    else if(message.mentions.users.first() === buddha_client.user &&! message.author.bot) {
 	return message.reply(`:no_entry: You must wait 2 seconds before talking to the bot again!`)
 	}
 
-    if (message.mentions.users.first() === buddha_client.user) {
+    if (message.mentions.users.first() === buddha_client.user &&! message.author.bot) {
         await message.channel.startTyping()
         await cleverbot(message.content.replace(`<@${buddha_client.user.id}> `, ``).replace(`<@!${buddha_client.user.id}> `, ``)).then(async response => {
             await message.reply(response)
@@ -62,5 +62,6 @@ buddha_client.on('message', async message => {
     }
 });
 
+// Login to the bots
 jesus_client.login(config.jesus_token);
 buddha_client.login(config.buddha_token);
