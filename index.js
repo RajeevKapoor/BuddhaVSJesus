@@ -8,7 +8,7 @@ const timerSet = new Set();
 
 client1.on('ready', () => {
     console.log(`Logged in as ${jesus_client.user.tag}!`);
-    jesus_client.channels.get(`681970286597373966`).send(`<@${buddha_client.user.id}> Hi!`)
+    jesus_client.channels.get(config.aichannel).send(`<@${buddha_client.user.id}> Hi!`)
     jesus_client.channels.forEach(channel => {
 		if(channel.type == "text"){
 			channel.stopTyping()
