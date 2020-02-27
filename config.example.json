@@ -1,4 +1,5 @@
 {
-    "client1":"client1 token",
-    "client2":"client2 token"
+    "client1_token":"client1 token",
+    "client2_token":"client2 token",
+    "aichannel":"682442603895062576"
 }
