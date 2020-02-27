@@ -1,12 +1,12 @@
 const Discord = require('discord.js');
 const config = require('./config.json');
 const cleverbot = require("cleverbot-free");
-const jesus_client = new Discord.Client();
-const buddha_client = new Discord.Client();
+const client1 = new Discord.Client();
+const client2 = new Discord.Client();
 
 const timerSet = new Set();
 
-jesus_client.on('ready', () => {
+client1.on('ready', () => {
     console.log(`Logged in as ${jesus_client.user.tag}!`);
     jesus_client.channels.get(`681970286597373966`).send(`<@${buddha_client.user.id}> Hi!`)
     jesus_client.channels.forEach(channel => {
@@ -15,7 +15,7 @@ jesus_client.on('ready', () => {
 		}
 	})
 });
-buddha_client.on('ready', () => {
+client2.on('ready', () => {
     console.log(`Logged in as ${buddha_client.user.tag}!`);
     buddha_client.channels.forEach(channel => {
 		if(channel.type == "text"){
@@ -24,7 +24,7 @@ buddha_client.on('ready', () => {
 	})
 });
 
-jesus_client.on('message', async message => {
+client1.on('message', async message => {
     if(!timerSet.has(message.author.id) && message.mentions.users.first() === jesus_client.user &&! message.author.bot){
  	timerSet.add(message.author.id)
 	setTimeout(function(){
@@ -42,7 +42,7 @@ jesus_client.on('message', async message => {
         });
     }
 });
-buddha_client.on('message', async message => {
+client2.on('message', async message => {
     if(!timerSet.has(message.author.id) && message.mentions.users.first() === buddha_client.user &&! message.author.bot){
  	timerSet.add(message.author.id)
 	setTimeout(function(){
@@ -63,5 +63,5 @@ buddha_client.on('message', async message => {
 });
 
 // Login to the bots
-buddha_client.login(config.buddha_token);
-jesus_client.login(config.jesus_token);
+client1.login(config.buddha_token);
+client2.login(config.jesus_token);
